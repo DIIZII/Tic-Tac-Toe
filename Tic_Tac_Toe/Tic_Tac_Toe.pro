@@ -18,11 +18,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwnd_ws.cpp \
-    playwindow.cpp
+    menuwindow.cpp \
+    playwindow.cpp \
+    ruleswindow.cpp
 
 HEADERS += \
     mainwnd_ws.h \
-    playwindow.h
+    menuwindow.h \
+    playwindow.h \
+    ruleswindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -30,7 +34,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 FORMS += \
-    playwindow.ui
+    menuwindow.ui \
+    playwindow.ui \
+    ruleswindow.ui
 
 RESOURCES += \
     resource.qrc

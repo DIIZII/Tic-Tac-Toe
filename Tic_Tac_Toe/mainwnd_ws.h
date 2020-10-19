@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "playwindow.h"
+#include "menuwindow.h"
 
 class MainWnd_WS
 {

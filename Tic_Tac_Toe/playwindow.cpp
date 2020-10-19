@@ -14,6 +14,8 @@ PlayWindow::PlayWindow(QWidget *parent) :
 
     winZero = 0;
     winCross = 0;
+    ui->labelZero->setText("0");
+    ui->labelCross->setText("0");
 }
 
 PlayWindow::~PlayWindow()
@@ -120,6 +122,7 @@ void PlayWindow::GamePlayerVSPlayer(QPushButton *button, int x, int y)
                                + ":"
                                + QString::number(winZero)
                                + "\nНовая партия");
+            ui->labelCross->setText(QString::number(winCross));
         }
         else if(result == 0)
         {
@@ -129,6 +132,7 @@ void PlayWindow::GamePlayerVSPlayer(QPushButton *button, int x, int y)
                                + ":"
                                + QString::number(winZero)
                                + "\nНовая партия");
+            ui->labelZero->setText(QString::number(winZero));
         }
         else
         {
@@ -175,6 +179,7 @@ void PlayWindow::NewGame()
 
 bool PlayWindow::Roles(int &number)
 {
+
     if((matrix[0][0] == 0 && matrix[0][1] == 0 && matrix[0][2] == 0)
             || (matrix[1][0] == 0 && matrix[1][1] == 0 && matrix[1][2] == 0)
             || (matrix[2][0] == 0 && matrix[2][1] == 0 && matrix[2][2] == 0)
@@ -203,3 +208,18 @@ bool PlayWindow::Roles(int &number)
         return false;
 }
 
+
+void PlayWindow::on_pushButton_back_clicked()
+{
+    MenuWindow::instance()->show();
+    this->close();
+}
+
+void PlayWindow::on_pushButto_clear_clicked()
+{
+    QMessageBox::StandardButton reply = QMessageBox::question(this,"Очистить","Начать сначало?",QMessageBox::Yes|QMessageBox::No);
+    if(reply == QMessageBox::Yes)
+    {
+        NewGame();
+    }
+}

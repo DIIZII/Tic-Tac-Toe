@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QMessageBox>
 
+#include "menuwindow.h"
+
 namespace Ui {
 class PlayWindow;
 }
@@ -39,6 +41,10 @@ private slots:
      void on_pushButton_8_clicked();
 
      void on_pushButton_9_clicked();
+
+     void on_pushButton_back_clicked();
+
+     void on_pushButto_clear_clicked();
 
 private:
     Ui::PlayWindow *ui;
