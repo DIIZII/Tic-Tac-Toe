@@ -2,5 +2,7 @@
     <qresource prefix="/res">
         <file>img/o.jpg</file>
         <file>img/x.jpg</file>
+        <file>img/image.png</file>
+        <file>img/algoritm-kak-vyigrat-v-krestiki-noliki.png</file>
     </qresource>
 </RCC>

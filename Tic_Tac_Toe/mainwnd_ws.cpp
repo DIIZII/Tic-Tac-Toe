@@ -2,12 +2,12 @@
 
 MainWnd_WS::MainWnd_WS()
 {
-    PlayWindow::instance()->show();
+//    PlayWindow::instance()->show();
+    MenuWindow::instance()->show();
 }
 
 MainWnd_WS::~MainWnd_WS()
 {
-
 }
 
 void MainWnd_WSDelFunc(MainWnd_WS * p) { delete p;}
