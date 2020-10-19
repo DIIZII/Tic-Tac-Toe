@@ -10,7 +10,7 @@ PlayWindow::PlayWindow(QWidget *parent) :
     move = 0;
     for(auto tmp_x = 0; tmp_x < Size_x; tmp_x++)
         for(auto tmp_y = 0; tmp_y < Size_y; tmp_y++)
-            matrix[tmp_x][tmp_y] = 0;
+            matrix[tmp_x][tmp_y] = -1;
 }
 
 PlayWindow::~PlayWindow()
@@ -131,7 +131,7 @@ void PlayWindow::GamePlayerVSPlayer(QPushButton *button, int x, int y)
         int h = button->height();
         button->setIconSize(QSize(w-6,h-6));
         button->setIcon(static_cast<QIcon>(pix.scaled(w,h)));
-        matrix[x][y] = 1;
+        matrix[x][y] = 0;
     }
     else
     {
@@ -140,10 +140,29 @@ void PlayWindow::GamePlayerVSPlayer(QPushButton *button, int x, int y)
         int h = button->height();
         button->setIconSize(QSize(w-6,h-6));
         button->setIcon(static_cast<QIcon>(pix.scaled(w,h)));
-        matrix [x][y] = 2;
+        matrix [x][y] = 1;
     }
 //    if((move == 9 || Roles()) || (move == 9 && Roles()))
-    if(move == 9 || Roles() == true)
+
+    if(Roles() == true)
+    {
+        QMessageBox::about(this,"Победа","Новая партия");
+        move = 0;
+        ui->pushButton->setIcon(QIcon());
+        ui->pushButton_2->setIcon(QIcon());
+        ui->pushButton_3->setIcon(QIcon());
+        ui->pushButton_4->setIcon(QIcon());
+        ui->pushButton_5->setIcon(QIcon());
+        ui->pushButton_6->setIcon(QIcon());
+        ui->pushButton_7->setIcon(QIcon());
+        ui->pushButton_8->setIcon(QIcon());
+        ui->pushButton_9->setIcon(QIcon());
+        for(auto tmp_x = 0; tmp_x < Size_x; tmp_x++)
+            for(auto tmp_y = 0; tmp_y < Size_y; tmp_y++)
+                matrix[tmp_x][tmp_y] = -1;
+    }
+
+    if(move == 9)
     {
         QMessageBox::StandardButton reply = QMessageBox::question(this,"Закончились ходы","Начать сначало",QMessageBox::Yes|QMessageBox::No);
         if(reply == QMessageBox::Yes)
@@ -160,14 +179,14 @@ void PlayWindow::GamePlayerVSPlayer(QPushButton *button, int x, int y)
             ui->pushButton_9->setIcon(QIcon());
             for(auto tmp_x = 0; tmp_x < Size_x; tmp_x++)
                 for(auto tmp_y = 0; tmp_y < Size_y; tmp_y++)
-                    matrix[tmp_x][tmp_y] = 0;
+                    matrix[tmp_x][tmp_y] = -1;
         }
     }
 }
 
 bool PlayWindow::Roles()
 {
-    if(matrix[0][0] == matrix[0][1] == matrix[0][2])
+    if((matrix[0][0] == matrix[0][1] == matrix[0][2] && matrix[0][0] != -1 && matrix[0][1] != -1 && matrix[0][2] != -1))
         return true;
     else
         return false;
