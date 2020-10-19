@@ -53,8 +53,12 @@ private:
 //    std::shared_ptr<std::shared_ptr<int>> matrix;
 
     void GamePlayerVSPlayer(QPushButton *button, int x, int y);
+    void NewGame();
 
-    bool Roles();
+    bool Roles(int &number);
+
+    int winZero;
+    int winCross;
 
 };
 
